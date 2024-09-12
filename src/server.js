@@ -14,8 +14,19 @@ connectDB();
 const app = express();
 
 // CORS configuration
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://frontendapiproject.vercel.app' // Vercel frontend URL
+];
+
 const corsOptions = {
-  origin: process.env.CORS_ORIGIN || 'http://localhost:3000', // Your frontend URL
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: 'GET,POST,PUT,DELETE',
   allowedHeaders: 'Content-Type,Authorization'
 };
