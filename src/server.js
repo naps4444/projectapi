@@ -1,9 +1,9 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors'); // Import CORS
-const connectDB = require('./config/db');
-const resourceRoutes = require('./routes/resourceRoutes');
-const errorHandler = require('./middleware/errorHandler');
+const connectDB = require('../config/db');
+const resourceRoutes = require('../routes/resourceRoutes');
+const errorHandler = require('../middleware/errorHandler');
 
 // Load environment variables
 dotenv.config();
